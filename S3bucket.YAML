@@ -1,0 +1,13 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'This format will create S3 bucket on console'.
+
+Resources:
+  newbucket:
+    Type: AWS::S3::Bucket
+    DeletionPolicy : Retain
+    AllowedValues:
+    - delete
+    - retain
+    - snapshot
+
+

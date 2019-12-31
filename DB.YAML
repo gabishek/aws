@@ -1,0 +1,4 @@
+Resources:
+  FirstDB1:
+    Type: AWS::RDS::DBInstace
+    Properties:
