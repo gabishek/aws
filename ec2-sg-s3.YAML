@@ -7,10 +7,11 @@ Parameters:
   InstanceType:
     Description: WebServer EC2 instance type
     Type: String
-    Default: t2.nano
+    Default: t2.micro
     AllowedValues:
       - t1.micro
       - t2.nano
+      - t2.micro
     ConstraintDescription: must be a valid EC2 instance type.
   SSHLocation:
     Description: The IP address range that can be used to SSH to the EC2 instances
@@ -25,6 +26,8 @@ Mappings:
     t1.micro:
       Arch: HVM64
     t2.nano:
+      Arch: HVM64
+    t2.micro:
       Arch: HVM64
   AWSRegionArch2AMI:
     us-east-1:
