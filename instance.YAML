@@ -9,7 +9,6 @@ Parameters:
     Description: Webserver EC2 instance type
     Type: String
     Default: t2.micro
-    AllowedValues:
     ConstraintDescription: must be a valid EC2 instance type.
   SSHLocation:
     Description: The IP address range that can be used to SSH to the EC2 instances
@@ -93,28 +92,12 @@ Resources:
       KeyName: !Ref KeyName
       ImageId: !Fn FindInMap
           - AWSRegionArch2AMI
-          - !Ref: 'AWS::Region'
+          - !Ref:'AWS::RegionArch2AMI'
           - !FindInMap
             - AWSInstanceType2Arch
             - !Ref InstanceType
             - Arch
 Outputs:
-  InstaceId:
-    Description: InstanceId id the newly created EC2 instance
-    Value !Ref EC2Instance
-  AZ:
-    Description: Availability Zone of the newly created EC2 instance
-    Value: !GetAtt 
-      - EC2Instance
-      - AvailabilityZone
-  PublicDNS:
-    Description: Public DNSName of the newly created EC2 instance
-    Value: !GetAtt 
-      - EC2Instance
-      - PublicDnsName
-  PublicIP:
-    Description: Public IP address of the newly created EC2 instance
-    Value: !GetAtt 
-      - EC2Instance
-      - PublicIp
-        
+  InstanceId:
+    Description: InstanceId id of the newly created EC2 instance
+    Value: !Ref EC2Instance
